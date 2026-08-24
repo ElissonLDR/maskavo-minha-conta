@@ -1,0 +1,1487 @@
+/**
+ * Maskavo Minha Conta — UI com contraste alto (texto / ícones / boxes).
+ * Cores forçadas onde o tema Elementor sobrescreve links e botões.
+ */
+
+.maskavo-mc {
+	--mc-accent: #a01baa;
+	--mc-accent-hover: #861692;
+	--mc-accent-dark: #4a1558;
+	--mc-text: #2a1a33;
+	--mc-muted: #5c4a66; /* ~4.5:1+ em fundo branco */
+	--mc-bg: #f8f0f9;
+	--mc-card: #ffffff;
+	--mc-radius: 20px;
+	--mc-gap: 20px;
+	--mc-sidebar: #4a1558;
+	--mc-sidebar-deep: #2e0d38;
+	--mc-on-dark: #ffffff;
+	--mc-on-accent: #ffffff;
+	--mc-sidebar-soft: rgba(160, 27, 170, 0.12);
+	--mc-border: rgba(74, 21, 88, 0.22);
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+	gap: var(--mc-gap);
+	align-items: start;
+	color: var(--mc-text);
+	font-family: inherit;
+}
+
+.maskavo-mc *,
+.maskavo-mc *::before,
+.maskavo-mc *::after {
+	box-sizing: border-box;
+}
+
+/* —— Sidebar (fundo escuro → texto sempre claro) —— */
+.maskavo-mc-nav {
+	background: linear-gradient(180deg, #5b1a6e 0%, #2e0d38 100%);
+	color: var(--mc-on-dark);
+	border-radius: var(--mc-radius);
+	padding: 24px 16px;
+	min-height: 420px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.maskavo-mc-nav__eyebrow {
+	display: block;
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.78);
+	margin-bottom: 4px;
+}
+
+.maskavo-mc-nav__name {
+	display: block;
+	font-size: 1.15rem;
+	font-weight: 700;
+	line-height: 1.3;
+	word-break: break-word;
+	color: #ffffff;
+}
+
+.maskavo-mc-nav__list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	flex: 1;
+}
+
+.maskavo-mc-nav__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	border: 0;
+	background: transparent;
+	color: #ffffff;
+	text-align: left;
+	padding: 12px 14px;
+	border-radius: 999px;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+	transition: background 0.2s ease, color 0.2s ease;
+	outline: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:hover,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus-visible,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:active {
+	background: rgba(255, 255, 255, 0.14) !important;
+	color: #ffffff !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:hover .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus-visible .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:active .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:hover .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:focus-visible .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item:active .maskavo-mc-nav__icon {
+	color: #ffffff !important;
+}
+
+/* Selecionado: fundo branco + texto escuro — inclusive com :focus/:active do tema */
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:hover,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus-visible,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:active {
+	background: #ffffff !important;
+	color: #4a1558 !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:hover .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus-visible .maskavo-mc-nav__label,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:active .maskavo-mc-nav__label {
+	color: #4a1558 !important;
+}
+
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:hover .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:focus-visible .maskavo-mc-nav__icon,
+.maskavo-mc .maskavo-mc-nav button.maskavo-mc-nav__item.is-active:active .maskavo-mc-nav__icon {
+	color: #a01baa !important;
+	opacity: 1;
+	background: transparent;
+}
+
+.maskavo-mc-nav__icon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: inherit;
+	opacity: 1;
+	background: transparent;
+	border-radius: 0;
+}
+
+.maskavo-mc-nav__icon svg {
+	display: block;
+	width: 20px;
+	height: 20px;
+	stroke: currentColor;
+}
+
+.maskavo-mc-nav__footer {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-top: 8px;
+	border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+/* Vence estilos globais de <a> do tema (roxo no roxo) */
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:link,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:visited,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:hover,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:focus,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:active {
+	color: #ffffff !important;
+	text-decoration: none !important;
+	font-weight: 700;
+	font-size: 0.95rem;
+	padding: 10px 14px;
+	border-radius: 10px;
+	opacity: 1;
+	background: transparent;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:hover,
+.maskavo-mc .maskavo-mc-nav a.maskavo-mc-nav__link:focus {
+	background: rgba(255, 255, 255, 0.14) !important;
+	color: #ffffff !important;
+}
+
+.maskavo-mc-main {
+	min-width: 0;
+}
+
+.maskavo-mc-mobile-home,
+.maskavo-mc-back {
+	display: none;
+}
+
+.maskavo-mc-mobile-nav {
+	display: none;
+}
+
+.maskavo-mc-mobile-select {
+	display: none;
+	margin-bottom: 14px;
+}
+
+.maskavo-mc-mobile-select select {
+	width: 100%;
+	padding: 12px 14px;
+	border-radius: 12px;
+	border: 1px solid var(--mc-border);
+	background: #fff;
+	color: var(--mc-text);
+	font: inherit;
+	font-weight: 600;
+}
+
+.maskavo-mc-panel {
+	display: none;
+}
+
+.maskavo-mc-panel.is-active {
+	display: block;
+	animation: maskavo-mc-fade 0.28s ease;
+}
+
+@keyframes maskavo-mc-fade {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.maskavo-mc-panel__head {
+	margin-bottom: 16px;
+}
+
+.maskavo-mc-panel__title {
+	margin: 0 0 6px;
+	font-size: 1.75rem;
+	line-height: 1.2;
+	color: var(--mc-accent-dark);
+}
+
+.maskavo-mc-panel__lead {
+	margin: 0;
+	color: var(--mc-muted);
+	font-size: 0.98rem;
+}
+
+.maskavo-mc-card {
+	background: var(--mc-card);
+	border-radius: var(--mc-radius);
+	padding: 24px;
+	border: 1px solid rgba(74, 21, 88, 0.08);
+	box-shadow: 0 10px 30px rgba(91, 26, 110, 0.08);
+	color: var(--mc-text);
+	position: relative;
+	overflow: hidden;
+}
+
+.maskavo-mc-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+/* Card horizontal (título + meta | botão) */
+.maskavo-mc-card--row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
+	min-height: 96px;
+	padding: 22px 36px 22px 26px;
+	z-index: 0;
+}
+
+/* Fundo estilo currículo / certificado */
+.maskavo-mc-card--curriculum {
+	background-color: #ffffff;
+	background-image:
+		linear-gradient(105deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.82) 48%, rgba(248, 240, 249, 0.55) 100%),
+		url("../img/curriculum-bg.svg");
+	background-repeat: no-repeat, no-repeat;
+	background-position: center, right center;
+	background-size: cover, auto 118%;
+}
+
+.maskavo-mc-card--curriculum::before {
+	content: "";
+	position: absolute;
+	inset: 10px;
+	border-radius: calc(var(--mc-radius) - 8px);
+	border: 1px solid rgba(160, 27, 170, 0.12);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.maskavo-mc-card--row > * {
+	position: relative;
+	z-index: 1;
+}
+
+.maskavo-mc-card__main {
+	flex: 1;
+	min-width: min(100%, 220px);
+}
+
+.maskavo-mc-card__topline {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 4px;
+}
+
+.maskavo-mc-card__title {
+	margin: 0;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.3;
+	color: var(--mc-accent-dark);
+}
+
+.maskavo-mc-card__title a {
+	color: var(--mc-accent-dark) !important;
+	text-decoration: none;
+}
+
+.maskavo-mc-card__title a:hover {
+	color: var(--mc-accent) !important;
+	text-decoration: underline;
+}
+
+.maskavo-mc-card__meta {
+	margin: 4px 0 0;
+	color: var(--mc-muted);
+	font-size: 0.92rem;
+	font-weight: 500;
+}
+
+/* Grid de certificados (3 por linha, ~16:9) */
+.maskavo-mc-cert-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.maskavo-mc a.maskavo-mc-cert-card,
+.maskavo-mc-cert-card {
+	position: relative;
+	display: block;
+	aspect-ratio: 16 / 9;
+	min-height: 140px;
+	border-radius: 18px;
+	overflow: hidden;
+	border: 1px solid rgba(74, 21, 88, 0.12);
+	box-shadow: 0 10px 28px rgba(74, 21, 88, 0.1);
+	text-decoration: none !important;
+	color: #ffffff !important;
+	background: #4a1558;
+	isolation: isolate;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maskavo-mc a.maskavo-mc-cert-card:hover,
+.maskavo-mc a.maskavo-mc-cert-card:focus,
+.maskavo-mc a.maskavo-mc-cert-card:focus-visible {
+	transform: translateY(-3px);
+	box-shadow: 0 16px 36px rgba(74, 21, 88, 0.18);
+	outline: none;
+	color: #ffffff !important;
+	text-decoration: none !important;
+}
+
+.maskavo-mc-cert-card__media {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-color: #f8f0f9;
+	background-image: var(--mc-cert-bg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transform: scale(1.02);
+	transition: transform 0.25s ease;
+}
+
+.maskavo-mc a.maskavo-mc-cert-card:hover .maskavo-mc-cert-card__media {
+	transform: scale(1.06);
+}
+
+.maskavo-mc-cert-card__shade {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(180deg, rgba(42, 26, 51, 0.15) 0%, rgba(42, 26, 51, 0.35) 42%, rgba(42, 26, 51, 0.88) 100%);
+	pointer-events: none;
+}
+
+.maskavo-mc-cert-card__body {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+	padding: 16px 16px 14px;
+}
+
+.maskavo-mc-cert-card__title {
+	font-size: 1.02rem;
+	font-weight: 700;
+	line-height: 1.25;
+	color: #ffffff !important;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.maskavo-mc-cert-card__meta {
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.maskavo-mc-cert-card__cta {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	margin-top: 4px;
+	padding: 8px 14px !important;
+	border-radius: 999px !important;
+	background: #a01baa !important;
+	background-color: #a01baa !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	font-size: 0.82rem;
+	font-weight: 700;
+	line-height: 1.2;
+	border: none !important;
+	box-shadow: 0 4px 14px rgba(160, 27, 170, 0.35);
+}
+
+.maskavo-mc a.maskavo-mc-cert-card:hover .maskavo-mc-cert-card__cta,
+.maskavo-mc a.maskavo-mc-cert-card:focus .maskavo-mc-cert-card__cta,
+.maskavo-mc a.maskavo-mc-cert-card:focus-visible .maskavo-mc-cert-card__cta,
+.maskavo-mc a.maskavo-mc-cert-card:active .maskavo-mc-cert-card__cta {
+	background: #861692 !important;
+	background-color: #861692 !important;
+	color: #ffffff !important;
+}
+
+
+.maskavo-mc-card--row .maskavo-mc-btn,
+.maskavo-mc-card--row a.maskavo-mc-btn {
+	flex-shrink: 0;
+	white-space: nowrap;
+	margin-right: 6px !important;
+	align-self: center;
+}
+
+.maskavo-mc-profile__top {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 22px;
+}
+
+.maskavo-mc-avatar {
+	width: 176px;
+	height: 176px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	background: var(--mc-sidebar-soft);
+	position: relative;
+	overflow: visible;
+}
+
+.maskavo-mc-avatar img {
+	width: 176px;
+	height: 176px;
+	object-fit: cover;
+	display: block;
+	border-radius: 50%;
+	border: 3px solid rgba(160, 27, 170, 0.28);
+	background: #fff;
+}
+
+.maskavo-mc-avatar__btn {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50% !important;
+	border: 1.5px solid #ffffff !important;
+	background: #a01baa !important;
+	background-color: #a01baa !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	cursor: pointer;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	z-index: 2;
+	line-height: 1 !important;
+	font-size: 0 !important;
+	text-decoration: none !important;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.maskavo-mc .maskavo-mc-avatar button.maskavo-mc-avatar__btn:hover,
+.maskavo-mc .maskavo-mc-avatar button.maskavo-mc-avatar__btn:focus,
+.maskavo-mc .maskavo-mc-avatar button.maskavo-mc-avatar__btn:focus-visible,
+.maskavo-mc .maskavo-mc-avatar button.maskavo-mc-avatar__btn:active {
+	background: #861692 !important;
+	background-color: #861692 !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	border-color: #fff !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc-avatar__btn svg,
+.maskavo-mc .maskavo-mc-avatar button.maskavo-mc-avatar__btn svg {
+	display: block;
+	width: 16px;
+	height: 16px;
+	stroke: #ffffff !important;
+	color: #ffffff !important;
+	fill: none !important;
+}
+
+/* display:!important nos botões sobrescrevia [hidden] do Remover */
+.maskavo-mc button.maskavo-mc-btn[hidden],
+.maskavo-mc .maskavo-mc-btn[hidden],
+.maskavo-mc [data-mc-avatar-remove][hidden] {
+	display: none !important;
+}
+
+.maskavo-mc-avatar__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.maskavo-mc .maskavo-mc-btn--sm {
+	padding: 8px 14px !important;
+	font-size: 0.85rem !important;
+}
+
+.maskavo-mc-feedback--avatar {
+	margin-top: 8px;
+}
+
+.maskavo-mc-avatar.is-busy {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.maskavo-mc-profile__intro {
+	flex: 1;
+	min-width: 0;
+}
+
+.maskavo-mc-profile__name {
+	margin: 0 0 4px;
+	font-size: 1.35rem;
+	color: var(--mc-accent-dark);
+}
+
+.maskavo-mc-profile__meta {
+	margin: 0;
+	color: var(--mc-muted);
+	font-size: 0.9rem;
+}
+
+.maskavo-mc-profile__meta strong {
+	color: var(--mc-text);
+	font-weight: 700;
+}
+
+/* Ícone (editar): fundo claro + ícone escuro — Elementor não pode pintar roxo sólido */
+.maskavo-mc button.maskavo-mc-icon-btn,
+.maskavo-mc .maskavo-mc-icon-btn {
+	margin-left: auto;
+	align-self: flex-start;
+	width: 40px;
+	height: 40px;
+	border-radius: 12px !important;
+	border: 1px solid rgba(74, 21, 88, 0.22) !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	color: #4a1558 !important;
+	cursor: pointer;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	padding: 0 !important;
+	line-height: 1 !important;
+	font-size: 0 !important;
+	text-decoration: none !important;
+	box-shadow: none !important;
+	-webkit-appearance: none;
+	appearance: none;
+	transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.maskavo-mc button.maskavo-mc-icon-btn svg,
+.maskavo-mc .maskavo-mc-icon-btn svg {
+	stroke: #4a1558 !important;
+	color: #4a1558 !important;
+	fill: none !important;
+	width: 18px;
+	height: 18px;
+}
+
+.maskavo-mc button.maskavo-mc-icon-btn:hover,
+.maskavo-mc button.maskavo-mc-icon-btn:focus,
+.maskavo-mc button.maskavo-mc-icon-btn:focus-visible,
+.maskavo-mc button.maskavo-mc-icon-btn:active,
+.maskavo-mc button.maskavo-mc-icon-btn[aria-expanded="true"] {
+	background: #a01baa !important;
+	background-color: #a01baa !important;
+	background-image: none !important;
+	border-color: #a01baa !important;
+	color: #ffffff !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc button.maskavo-mc-icon-btn:hover svg,
+.maskavo-mc button.maskavo-mc-icon-btn:focus svg,
+.maskavo-mc button.maskavo-mc-icon-btn:focus-visible svg,
+.maskavo-mc button.maskavo-mc-icon-btn:active svg,
+.maskavo-mc button.maskavo-mc-icon-btn[aria-expanded="true"] svg {
+	stroke: #ffffff !important;
+	color: #ffffff !important;
+}
+
+.maskavo-mc-dl {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px 24px;
+	margin: 0;
+}
+
+.maskavo-mc-dl dt {
+	margin: 0 0 4px;
+	font-size: 0.8rem;
+	color: var(--mc-muted);
+	font-weight: 600;
+}
+
+.maskavo-mc-dl dd {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--mc-text);
+	word-break: break-word;
+}
+
+/* Campos editáveis um a um */
+.maskavo-mc-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px 24px;
+	margin-top: 8px;
+}
+
+.maskavo-mc-field {
+	min-width: 0;
+	padding: 12px 14px;
+	border-radius: 14px;
+	border: 1px solid rgba(74, 21, 88, 0.1);
+	background: #fff;
+}
+
+.maskavo-mc-field.is-editing {
+	border-color: rgba(160, 27, 170, 0.35);
+	box-shadow: 0 0 0 3px rgba(160, 27, 170, 0.1);
+}
+
+.maskavo-mc-field[data-mc-field="email"] {
+	grid-column: 1 / -1;
+}
+
+.maskavo-mc-field__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 6px;
+}
+
+.maskavo-mc-field__label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--mc-muted);
+}
+
+.maskavo-mc-field__value {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--mc-text);
+	word-break: break-word;
+}
+
+.maskavo-mc button.maskavo-mc-field__edit,
+.maskavo-mc button.maskavo-mc-field__warn,
+.maskavo-mc button.maskavo-mc-field__action {
+	width: 32px;
+	height: 32px;
+	border-radius: 10px !important;
+	border: 1px solid rgba(74, 21, 88, 0.18) !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	color: #4a1558 !important;
+	cursor: pointer;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	line-height: 1 !important;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.maskavo-mc button.maskavo-mc-field__edit svg,
+.maskavo-mc button.maskavo-mc-field__warn svg,
+.maskavo-mc button.maskavo-mc-field__action svg {
+	stroke: #4a1558 !important;
+	color: #4a1558 !important;
+	fill: none !important;
+	display: block;
+}
+
+.maskavo-mc button.maskavo-mc-field__edit:hover,
+.maskavo-mc button.maskavo-mc-field__edit:focus,
+.maskavo-mc button.maskavo-mc-field__edit:focus-visible,
+.maskavo-mc button.maskavo-mc-field__edit:active,
+.maskavo-mc button.maskavo-mc-field__action--save:hover,
+.maskavo-mc button.maskavo-mc-field__action--save:focus,
+.maskavo-mc button.maskavo-mc-field__action--save:focus-visible,
+.maskavo-mc button.maskavo-mc-field__action--save:active {
+	background: #a01baa !important;
+	background-color: #a01baa !important;
+	border-color: #a01baa !important;
+	color: #ffffff !important;
+	outline: none !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__edit:hover svg,
+.maskavo-mc button.maskavo-mc-field__edit:focus svg,
+.maskavo-mc button.maskavo-mc-field__edit:focus-visible svg,
+.maskavo-mc button.maskavo-mc-field__edit:active svg,
+.maskavo-mc button.maskavo-mc-field__action--save:hover svg,
+.maskavo-mc button.maskavo-mc-field__action--save:focus svg,
+.maskavo-mc button.maskavo-mc-field__action--save:focus-visible svg,
+.maskavo-mc button.maskavo-mc-field__action--save:active svg {
+	stroke: #ffffff !important;
+	color: #ffffff !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__warn {
+	color: #8a5a00 !important;
+	border-color: rgba(138, 90, 0, 0.35) !important;
+	background: rgba(138, 90, 0, 0.08) !important;
+	background-color: rgba(138, 90, 0, 0.08) !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__warn svg {
+	stroke: #8a5a00 !important;
+	color: #8a5a00 !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__warn:hover,
+.maskavo-mc button.maskavo-mc-field__warn:focus,
+.maskavo-mc button.maskavo-mc-field__warn:focus-visible,
+.maskavo-mc button.maskavo-mc-field__warn:active,
+.maskavo-mc .maskavo-mc-tooltip.is-open button.maskavo-mc-field__warn {
+	background: #8a5a00 !important;
+	background-color: #8a5a00 !important;
+	border-color: #8a5a00 !important;
+	color: #ffffff !important;
+	outline: none !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__warn:hover svg,
+.maskavo-mc button.maskavo-mc-field__warn:focus svg,
+.maskavo-mc button.maskavo-mc-field__warn:focus-visible svg,
+.maskavo-mc button.maskavo-mc-field__warn:active svg,
+.maskavo-mc .maskavo-mc-tooltip.is-open button.maskavo-mc-field__warn svg {
+	stroke: #ffffff !important;
+	color: #ffffff !important;
+	fill: none !important;
+}
+
+.maskavo-mc button.maskavo-mc-field__warn svg circle[fill],
+.maskavo-mc .maskavo-mc-tooltip.is-open button.maskavo-mc-field__warn svg circle[fill] {
+	fill: currentColor !important;
+}
+
+/* display:flex sobrescrevia [hidden] do HTML — só mostra em edição */
+.maskavo-mc-field__edit-wrap,
+.maskavo-mc-field__edit-wrap[hidden],
+.maskavo-mc-field:not(.is-editing) .maskavo-mc-field__edit-wrap {
+	display: none !important;
+}
+
+.maskavo-mc-field.is-editing .maskavo-mc-field__view,
+.maskavo-mc-field.is-editing .maskavo-mc-field__view[hidden] {
+	display: none !important;
+}
+
+.maskavo-mc-field.is-editing .maskavo-mc-field__edit-wrap {
+	display: flex !important;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.maskavo-mc-field__input {
+	flex: 1;
+	min-width: 140px;
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(160, 27, 170, 0.28);
+	font: inherit;
+	font-weight: 600;
+	color: var(--mc-text);
+	background: #fff;
+}
+
+.maskavo-mc-field__input:focus {
+	outline: 2px solid rgba(160, 27, 170, 0.35);
+	border-color: #a01baa;
+}
+
+.maskavo-mc-field__actions {
+	display: inline-flex;
+	gap: 6px;
+}
+
+.maskavo-mc-tooltip {
+	position: relative;
+	display: inline-flex;
+}
+
+.maskavo-mc-tooltip__bubble {
+	position: absolute;
+	top: calc(100% + 8px);
+	right: 0;
+	z-index: 20;
+	width: min(280px, 70vw);
+	padding: 12px 14px;
+	border-radius: 12px;
+	background: #2a1a33;
+	color: #ffffff;
+	font-size: 0.85rem;
+	font-weight: 500;
+	line-height: 1.45;
+	box-shadow: 0 10px 28px rgba(42, 26, 51, 0.28);
+}
+
+.maskavo-mc-tooltip__bubble::before {
+	content: "";
+	position: absolute;
+	top: -6px;
+	right: 12px;
+	width: 12px;
+	height: 12px;
+	background: #2a1a33;
+	transform: rotate(45deg);
+}
+
+.maskavo-mc-form {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.maskavo-mc-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 0.85rem;
+	color: var(--mc-muted);
+	font-weight: 700;
+}
+
+.maskavo-mc-form input {
+	padding: 12px 14px;
+	border-radius: 12px;
+	border: 1px solid var(--mc-border);
+	font: inherit;
+	font-weight: 500;
+	color: var(--mc-text);
+	background: #fff;
+}
+
+.maskavo-mc-form input:focus {
+	outline: 2px solid rgba(160, 27, 170, 0.45);
+	border-color: var(--mc-accent);
+}
+
+.maskavo-mc-form__row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.maskavo-mc-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 4px;
+}
+
+.maskavo-mc-hint {
+	margin: 0;
+	font-size: 0.85rem;
+	color: var(--mc-muted);
+}
+
+/* —— Botões Maskavo (próprios; vencem Elementor em todos os estados) —— */
+.maskavo-mc button,
+.maskavo-mc .maskavo-mc-btn,
+.maskavo-mc a.maskavo-mc-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	font-family: inherit;
+}
+
+.maskavo-mc .maskavo-mc-btn,
+.maskavo-mc a.maskavo-mc-btn,
+.maskavo-mc button.maskavo-mc-btn {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 11px 18px !important;
+	border-radius: 999px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	font: inherit;
+	font-weight: 700 !important;
+	font-size: 0.95rem !important;
+	line-height: 1.2 !important;
+	text-decoration: none !important;
+	text-transform: none !important;
+	letter-spacing: normal !important;
+	cursor: pointer;
+	box-shadow: none !important;
+	background-image: none !important;
+	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Primário: fundo roxo + texto/ícone brancos */
+.maskavo-mc .maskavo-mc-btn--primary,
+.maskavo-mc a.maskavo-mc-btn--primary,
+.maskavo-mc a.maskavo-mc-btn--primary:link,
+.maskavo-mc a.maskavo-mc-btn--primary:visited,
+.maskavo-mc a.maskavo-mc-btn--primary:hover,
+.maskavo-mc a.maskavo-mc-btn--primary:focus,
+.maskavo-mc a.maskavo-mc-btn--primary:focus-visible,
+.maskavo-mc a.maskavo-mc-btn--primary:active,
+.maskavo-mc button.maskavo-mc-btn--primary,
+.maskavo-mc button.maskavo-mc-btn--primary:hover,
+.maskavo-mc button.maskavo-mc-btn--primary:focus,
+.maskavo-mc button.maskavo-mc-btn--primary:focus-visible,
+.maskavo-mc button.maskavo-mc-btn--primary:active {
+	background: #a01baa !important;
+	background-color: #a01baa !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	border-color: #a01baa !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc .maskavo-mc-btn--primary:hover,
+.maskavo-mc a.maskavo-mc-btn--primary:hover,
+.maskavo-mc button.maskavo-mc-btn--primary:hover {
+	background: #861692 !important;
+	background-color: #861692 !important;
+	border-color: #861692 !important;
+	color: #ffffff !important;
+}
+
+.maskavo-mc .maskavo-mc-btn--primary svg,
+.maskavo-mc a.maskavo-mc-btn--primary svg,
+.maskavo-mc button.maskavo-mc-btn--primary svg {
+	stroke: #ffffff !important;
+	color: #ffffff !important;
+	fill: none !important;
+}
+
+/* Ghost: fundo branco + texto escuro */
+.maskavo-mc .maskavo-mc-btn--ghost,
+.maskavo-mc a.maskavo-mc-btn--ghost,
+.maskavo-mc a.maskavo-mc-btn--ghost:link,
+.maskavo-mc a.maskavo-mc-btn--ghost:visited,
+.maskavo-mc a.maskavo-mc-btn--ghost:hover,
+.maskavo-mc a.maskavo-mc-btn--ghost:focus,
+.maskavo-mc a.maskavo-mc-btn--ghost:focus-visible,
+.maskavo-mc a.maskavo-mc-btn--ghost:active,
+.maskavo-mc button.maskavo-mc-btn--ghost,
+.maskavo-mc button.maskavo-mc-btn--ghost:hover,
+.maskavo-mc button.maskavo-mc-btn--ghost:focus,
+.maskavo-mc button.maskavo-mc-btn--ghost:focus-visible,
+.maskavo-mc button.maskavo-mc-btn--ghost:active {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	color: #4a1558 !important;
+	border-color: rgba(74, 21, 88, 0.28) !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.maskavo-mc .maskavo-mc-btn--ghost:hover,
+.maskavo-mc a.maskavo-mc-btn--ghost:hover,
+.maskavo-mc button.maskavo-mc-btn--ghost:hover {
+	background: rgba(160, 27, 170, 0.1) !important;
+	background-color: rgba(160, 27, 170, 0.1) !important;
+	color: #4a1558 !important;
+}
+
+.maskavo-mc .maskavo-mc-btn--ghost svg,
+.maskavo-mc a.maskavo-mc-btn--ghost svg,
+.maskavo-mc button.maskavo-mc-btn--ghost svg {
+	stroke: #4a1558 !important;
+	color: #4a1558 !important;
+	fill: none !important;
+}
+
+.maskavo-mc .maskavo-mc-btn:disabled,
+.maskavo-mc button.maskavo-mc-btn:disabled {
+	opacity: 0.65 !important;
+	cursor: wait !important;
+}
+
+.maskavo-mc-feedback {
+	margin: 0;
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+
+.maskavo-mc-feedback.is-ok {
+	color: #176b35;
+}
+
+.maskavo-mc-feedback.is-err {
+	color: #a11a12;
+}
+
+.maskavo-mc-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 12px;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	background: var(--mc-sidebar-soft);
+	color: var(--mc-accent-dark);
+}
+
+.maskavo-mc-badge--active {
+	background: rgba(23, 107, 53, 0.14);
+	color: #176b35;
+}
+
+.maskavo-mc-badge--cancelled,
+.maskavo-mc-badge--expired {
+	background: rgba(161, 26, 18, 0.12);
+	color: #a11a12;
+}
+
+.maskavo-mc-badge--pending,
+.maskavo-mc-badge--hold {
+	background: rgba(138, 90, 0, 0.14);
+	color: #6e4800;
+}
+
+.maskavo-mc-badge--approved {
+	background: rgba(23, 107, 53, 0.14);
+	color: #176b35;
+}
+
+.maskavo-mc-stars {
+	display: inline-flex;
+	gap: 2px;
+	margin: 6px 0 2px;
+	line-height: 1;
+}
+
+.maskavo-mc-star {
+	font-size: 1.15rem;
+	color: rgba(74, 21, 88, 0.22);
+}
+
+.maskavo-mc-star.is-on {
+	color: #a01baa;
+}
+
+.maskavo-mc-review__content {
+	margin: 8px 0 0;
+	color: var(--mc-text);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	max-width: 52ch;
+}
+
+.maskavo-mc-empty {
+	text-align: center;
+	color: var(--mc-muted);
+}
+
+.maskavo-mc-empty p {
+	margin: 0 0 16px;
+	color: var(--mc-muted);
+}
+
+.maskavo-mc--guest {
+	display: block;
+}
+
+.maskavo-mc-card--guest {
+	text-align: center;
+	padding: 40px 24px;
+	background: var(--mc-bg);
+}
+
+.maskavo-mc-guest__title {
+	margin: 0 0 8px;
+	color: var(--mc-accent-dark);
+}
+
+.maskavo-mc-guest__text {
+	margin: 0 0 18px;
+	color: var(--mc-muted);
+}
+
+.maskavo-mc .screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+@media (max-width: 860px) {
+	.maskavo-mc {
+		grid-template-columns: 1fr;
+		padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+	}
+
+	.maskavo-mc-main {
+		padding-bottom: 24px;
+	}
+
+	.maskavo-mc-cert-grid {
+		padding-bottom: 12px;
+	}
+
+	.maskavo-mc-nav {
+		display: none;
+	}
+
+	.maskavo-mc-mobile-home {
+		display: block;
+	}
+
+	.maskavo-mc-mobile-home[hidden] {
+		display: none !important;
+	}
+
+	.maskavo-mc-mobile-home__head {
+		margin-bottom: 18px;
+	}
+
+	.maskavo-mc-mobile-home__eyebrow {
+		display: block;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--mc-muted);
+		margin-bottom: 4px;
+	}
+
+	.maskavo-mc-mobile-home__name {
+		display: block;
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: var(--mc-accent-dark);
+	}
+
+	.maskavo-mc-mobile-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.maskavo-mc .maskavo-mc-mobile-menu button.maskavo-mc-mobile-menu__item {
+		display: flex !important;
+		align-items: center;
+		gap: 12px;
+		width: 100%;
+		padding: 14px 16px !important;
+		margin: 0 !important;
+		border: 1px solid rgba(74, 21, 88, 0.12) !important;
+		border-radius: 16px !important;
+		background: #ffffff !important;
+		background-color: #ffffff !important;
+		background-image: none !important;
+		color: #4a1558 !important;
+		box-shadow: 0 8px 22px rgba(74, 21, 88, 0.06) !important;
+		cursor: pointer;
+		text-align: left;
+		line-height: 1.2 !important;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.maskavo-mc .maskavo-mc-mobile-menu button.maskavo-mc-mobile-menu__item:hover,
+	.maskavo-mc .maskavo-mc-mobile-menu button.maskavo-mc-mobile-menu__item:focus,
+	.maskavo-mc .maskavo-mc-mobile-menu button.maskavo-mc-mobile-menu__item:focus-visible,
+	.maskavo-mc .maskavo-mc-mobile-menu button.maskavo-mc-mobile-menu__item:active {
+		border-color: rgba(160, 27, 170, 0.35) !important;
+		background: #faf5fb !important;
+		outline: none !important;
+		color: #4a1558 !important;
+	}
+
+	.maskavo-mc-mobile-menu__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: rgba(165, 0, 255, 0.11);
+		color: #4a1558;
+		flex-shrink: 0;
+	}
+
+	.maskavo-mc-mobile-menu__icon svg {
+		display: block;
+		stroke: #4a1558;
+		color: #4a1558;
+		fill: none;
+	}
+
+	.maskavo-mc-mobile-menu__label {
+		flex: 1;
+		font-size: 1rem;
+		font-weight: 700;
+		color: #4a1558 !important;
+	}
+
+	.maskavo-mc-mobile-menu__chevron {
+		display: inline-flex;
+		color: #9a84a8;
+		flex-shrink: 0;
+	}
+
+	.maskavo-mc-mobile-menu__chevron svg {
+		stroke: currentColor;
+	}
+
+	.maskavo-mc-mobile-home__footer {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-top: 18px;
+		padding-top: 8px;
+	}
+
+	.maskavo-mc a.maskavo-mc-mobile-menu__link,
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:link,
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:visited {
+		display: flex !important;
+		align-items: center;
+		gap: 12px;
+		padding: 12px 16px;
+		border-radius: 14px;
+		text-decoration: none !important;
+		color: #4a1558 !important;
+		font-weight: 600;
+		background: transparent !important;
+	}
+
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:hover,
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:focus,
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:focus-visible,
+	.maskavo-mc a.maskavo-mc-mobile-menu__link:active {
+		background: rgba(160, 27, 170, 0.08) !important;
+		color: #4a1558 !important;
+		outline: none !important;
+	}
+
+	.maskavo-mc a.maskavo-mc-mobile-menu__link--sair {
+		color: #8a2a3a !important;
+	}
+
+	.maskavo-mc button.maskavo-mc-back {
+		display: inline-flex !important;
+		align-items: center;
+		gap: 6px;
+		margin: 0 0 14px !important;
+		padding: 10px 14px !important;
+		border: 1px solid rgba(74, 21, 88, 0.16) !important;
+		border-radius: 999px !important;
+		background: #ffffff !important;
+		background-color: #ffffff !important;
+		background-image: none !important;
+		color: #4a1558 !important;
+		font-weight: 700 !important;
+		font-size: 0.92rem !important;
+		line-height: 1 !important;
+		cursor: pointer;
+		box-shadow: none !important;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.maskavo-mc button.maskavo-mc-back[hidden] {
+		display: none !important;
+	}
+
+	.maskavo-mc button.maskavo-mc-back:hover,
+	.maskavo-mc button.maskavo-mc-back:focus,
+	.maskavo-mc button.maskavo-mc-back:focus-visible,
+	.maskavo-mc button.maskavo-mc-back:active {
+		background: #a01baa !important;
+		border-color: #a01baa !important;
+		color: #ffffff !important;
+		outline: none !important;
+	}
+
+	.maskavo-mc button.maskavo-mc-back svg {
+		stroke: #4a1558 !important;
+		color: #4a1558 !important;
+		display: block;
+	}
+
+	.maskavo-mc button.maskavo-mc-back:hover svg,
+	.maskavo-mc button.maskavo-mc-back:focus svg,
+	.maskavo-mc button.maskavo-mc-back:focus-visible svg,
+	.maskavo-mc button.maskavo-mc-back:active svg {
+		stroke: #ffffff !important;
+		color: #ffffff !important;
+	}
+
+	/* Sem seção aberta: só o menu. Com seção: esconde home. */
+	.maskavo-mc:not(.is-mobile-section) > .maskavo-mc-main > [data-mc-panel] {
+		display: none !important;
+	}
+
+	.maskavo-mc.is-mobile-section .maskavo-mc-mobile-home {
+		display: none !important;
+	}
+
+	.maskavo-mc-mobile-select {
+		display: none;
+	}
+
+	.maskavo-mc-dl,
+	.maskavo-mc-form__row,
+	.maskavo-mc-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.maskavo-mc-field[data-mc-field="email"] {
+		grid-column: auto;
+	}
+
+	.maskavo-mc-profile__top {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 14px;
+	}
+
+	/* Filhos sobem para o flex do top — ordem: foto → botões → título */
+	.maskavo-mc-profile__intro {
+		display: contents;
+	}
+
+	.maskavo-mc-profile__top > .maskavo-mc-avatar {
+		order: 1;
+	}
+
+	.maskavo-mc-profile__top .maskavo-mc-avatar__actions {
+		order: 2;
+		margin-top: 0;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.maskavo-mc-profile__top .maskavo-mc-profile__identity {
+		order: 3;
+		width: 100%;
+	}
+
+	.maskavo-mc-profile__top .maskavo-mc-feedback--avatar {
+		order: 4;
+		width: 100%;
+		text-align: center;
+	}
+
+	.maskavo-mc-profile__name {
+		font-size: 1.25rem;
+	}
+
+	.maskavo-mc-icon-btn {
+		margin-left: 0;
+	}
+
+	.maskavo-mc-panel__title {
+		font-size: 1.45rem;
+	}
+
+	.maskavo-mc-card--row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.maskavo-mc-card--curriculum {
+		background-position: center, right -20px center;
+		background-size: cover, auto 140%;
+	}
+
+	.maskavo-mc-card--row .maskavo-mc-btn {
+		width: 100%;
+	}
+
+	.maskavo-mc-cert-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+	.maskavo-mc-cert-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
